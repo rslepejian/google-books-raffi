@@ -10,20 +10,6 @@ function Books() {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
   const [result, setResult] = useState({});
-  // console.log (books)
-  // useEffect(()=>{
-  //   loadBooks();
-  // },[search])
-
-  // // fucntion loadBooks this will load all the book instead of just the one that is searched 
-  // const loadBooks = ()=> {
-  //   API.getBooks().then((books) => {
-  //     setBooks(books)
-  //     // console.log(users)
-  //   })
-  //     .catch(err => console.log(err));
-  // }
-  // this will incorperate the name of the search 
   function loadBooks(event) {
     event.preventDefault();
     // console.log("loadedbooks")

@@ -1,29 +1,73 @@
-# Create React Express App
+# Google Books
 
-## About This Boilerplate
+## Description
+This application uses the googlebooks api and a mongodb database stored using AtlasDB to allow a user to search for books and save them to a persistent database for future reference.
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## Built With
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [JS](https://www.javascript.com/)
+* [GitHub](https://github.com/)
+* [Git](https://git-scm.com/)
+* [node.js](https://nodejs.org/en/)
+* [npm](https://www.npmjs.com/)
+* [Reactjs](https://reactjs.org/)
+* [Bootstrap](https://getbootstrap.com/)
+* [MongoDB](https://www.mongodb.com/)
+* [AtlasDB](https://www.mongodb.com/cloud/atlas)
+* [Heroku](https://dashboard.heroku.com/apps)
 
-## Starting the app locally
+## Deployed Link
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+* [See Live Site](https://glacial-island-99571.herokuapp.com/)
 
+## Preview of Working Site
+
+![Image](./preview.png)
+
+## Code Snippet
+This code is used in the search page to make calls from the client side to search for books using the google api. It also shows the function that is passed as a prop to the component that shows data for the searched books and allows a user to save books.
+
+```javascript
+  const [books, setBooks] = useState([]);
+  const [search, setSearch] = useState("");
+  const [result, setResult] = useState({});
+  function loadBooks(event) {
+    event.preventDefault();
+    // console.log("loadedbooks")
+    var searchName = event.target.value;
+    if (searchName === "") {
+      setBooks([]);
+    }
+
+    API.getBookList().then(() => {
+      API.getBooks(searchName).then((books) => {
+        setBooks(books)
+      });
+    })
+      .catch(err => console.log(err));
+  }
+
+  function saveBooks(bookData) {
+    console.log(bookData);
+    API.saveBook({
+      title: bookData.title,
+      author: bookData.author,
+      synopsis: bookData.synopsis,
+      image: bookData.image,
+      link: bookData.link
+    })
+      .catch(err => console.log(err))
+  }
 ```
-npm install
-```
 
-This should install node modules within the server and the client folder.
+## Authors
 
-After both installations complete, run the following command in your terminal:
+* **Raffi Lepejian** 
 
-```
-npm start
-```
+## Contact Information
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+- [Link to Portfolio Site](https://rslepejian.github.io/react-portfolio/#/)
+- [Link to Github](https://github.com/rslepejian)
+- [Link to LinkedIn](https://linkedin.com/in/raffi-lepejian-071876153)
