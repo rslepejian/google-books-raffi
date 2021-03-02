@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { use } from "../../../routes/api";
 import SavedCard from "../components/SavedCard";
 import API from "../utils/API";
 // import Result from "../components/Result";
