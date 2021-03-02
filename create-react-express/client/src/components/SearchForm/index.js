@@ -14,7 +14,6 @@ function SearchForm (props) {
         props.loadBooks(event)
       }
       } placeholder='Search for a book title!' type="text" className="form-control" id="exampleInput" aria-describedby="" />
-        <button type="submit" className="btn btn-primary">Search</button>
 
         </div>
       </form>
